@@ -1,0 +1,21 @@
+<div class="todo_container">
+    <h2 class="title">{{title}}</h2>
+    <!-- Header -->
+    <div class="head_todo">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <input type="text" placeholder="Enter your toDo" ngModel name="todo_item" #todo_item="ngModel" id="todo_item_value" required>
+            <input type="submit" value="Click to Add" id="btn">
+        </form> 
+        <div class="error" *ngIf="form.submitted&&todo_item.errors?.required">Field can't be empty</div>
+    </div>
+    <!-- Todo Items -->
+    <div class="todo_item" *ngIf="form.submitted&&!todo_item.invalid">
+        <div class="item" *ngFor="let item of formArray">
+            <div class="value">{{item.todo_item}}</div>
+            <div class="controls">
+                <i class="fa-solid fa-pen-to-square" (click)="edit(this.item.id)"></i>
+                <i class="fa-solid fa-trash-can" (click)="delete(this.item.id)"></i>
+            </div>
+        </div>
+    </div>
+</div>

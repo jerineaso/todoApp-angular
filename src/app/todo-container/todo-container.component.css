@@ -1,0 +1,66 @@
+.title{
+    margin-bottom: 15px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#todo_item_value{
+    outline: none;
+    padding: 12px 15px;
+    font-size: 18px;
+}
+
+#btn{
+    padding: 12px 15px;
+    outline: none;
+    margin-left: 5px;
+    border: none;
+    background-color: #111;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.error{
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.todo_item{
+    margin-top: 50px;
+    padding: 5px;
+    border: 1px solid black;
+    overflow-y: auto;
+    height: 150px;
+}
+
+.todo_item::-webkit-scrollbar{
+    width: 10px;
+}
+
+.todo_item::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+.todo_item::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+.item{
+    list-style: none;
+    font-size: 16px;
+    border: 2px solid #cacaca;
+    margin: 8px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-pen-to-square{
+    margin-right: 12px;
+}
+
+.fa-trash-can, .fa-pen-to-square{
+    cursor: pointer;
+}
