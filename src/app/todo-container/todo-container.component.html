@@ -11,11 +11,11 @@
     </div>
     <!-- Todo Items -->
     <div class="todo_item" *ngIf="isSubmit">
-        <div class="item" *ngFor="let item of formData">
+        <div class="item" *ngFor="let item of formData; let i= index " >
             <div class="value">{{item.todo_item}}</div>
             <div class="controls">
-                <i class="fa-solid fa-pen-to-square" (click)="edit(this.item.id)"></i>
-                <i class="fa-solid fa-trash-can" (click)="delete(this.item.id)"></i>
+                <i class="fa-solid fa-pen-to-square" (click)="edit(i)"></i>
+                <i class="fa-solid fa-trash-can" (click)="delete(i)"></i>
             </div>
         </div>
     </div>

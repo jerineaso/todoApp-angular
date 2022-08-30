@@ -14,7 +14,6 @@ export class TodoContainerComponent {
   isSubmit: boolean = false;
   data: any = {};
   isEnabled: boolean = false;
-  isEmpty: boolean = false;
   index!: number;
 
 
@@ -30,9 +29,10 @@ export class TodoContainerComponent {
   onSubmit() {
     this.isSubmit = true;
     this.todoData.value.id = this.formData.length
+    console.log(this.todoData.value);
+
     this.formData.push(this.todoData.value) 
-    console.log(this.formData);
-    console.log()
+    console.warn("data"+""+this.formData);
     this.todoData.controls['todo_item'].reset();
   }
 
@@ -41,11 +41,8 @@ export class TodoContainerComponent {
   }
 
   edit(x:number){
-    this.data = this.formData.find((item: any) =>{
-      return item.id === x
-    })
-    this.index = this.data.id
-    this.todoData.controls['todo_item'].setValue(this.data.todo_item)
+    this.index = x
+    this.todoData.controls['todo_item'].setValue(this.formData[this.index].todo_item)
     this.isEnabled = true
   }
 
@@ -55,11 +52,8 @@ export class TodoContainerComponent {
   }
 
   delete(x:number){
-    this.data = this.formData.find((item: any) =>{
-      return item.id === x
-    })
-    
-    this.formData.splice(this.data.id,1)
+    this.formData.splice(x,1);
+    console.log("x"+""+x+""+"form"+this.formData);
   }
 }
 
