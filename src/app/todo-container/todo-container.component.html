@@ -2,15 +2,16 @@
     <h2 class="title">{{title}}</h2>
     <!-- Header -->
     <div class="head_todo">
-        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <input type="text" placeholder="Enter your toDo" ngModel name="todo_item" #todo_item="ngModel" id="todo_item_value" required>
-            <input type="submit" value="Click to Add" id="btn">
+            <form [formGroup]="todoData">
+            <input type="text" formControlName="todo_item" placeholder="Enter your toDo" name="todo_item" id="todo_item_value">
+            <input *ngIf="!isEnabled" type="submit" (click)="onSubmit()"  value="Click to Add" id="btn">
+            <input *ngIf="isEnabled" type="submit" (click)="update()"  value="Update" id="btn">
         </form> 
-        <div class="error" *ngIf="form.submitted&&todo_item.errors?.required">Field can't be empty</div>
+        <div class="error" *ngIf="todo && todo.invalid && todo.touched">Field can't be empty</div>
     </div>
     <!-- Todo Items -->
-    <div class="todo_item" *ngIf="form.submitted&&!todo_item.invalid">
-        <div class="item" *ngFor="let item of formArray">
+    <div class="todo_item" *ngIf="isSubmit">
+        <div class="item" *ngFor="let item of formData">
             <div class="value">{{item.todo_item}}</div>
             <div class="controls">
                 <i class="fa-solid fa-pen-to-square" (click)="edit(this.item.id)"></i>
